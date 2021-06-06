@@ -17,17 +17,12 @@ public class HiloConexion extends Thread {
     public static final int CARTAS = 2;
     Handler handler;
     Boolean img;
-    String urlImg;
+    String url;
 
-    public HiloConexion(Handler handler, boolean img){
+    public HiloConexion(Handler handler, boolean img, String url){
         this.handler = handler;
         this.img = img;
-    }
-
-    public HiloConexion(Handler handler, boolean img, String urlImg){
-        this.handler = handler;
-        this.img = img;
-        this.urlImg = urlImg;
+        this.url = url;
     }
 
     @Override
@@ -35,7 +30,7 @@ public class HiloConexion extends Thread {
         try{
             ConexionHTTP conexionHTTP = new ConexionHTTP();
             if(!img){
-                byte[] cartasJson = conexionHTTP.obtenerRespuesta("https://db.ygoprodeck.com/api/v7/cardinfo.php?name=Pot%20of%20Greed");
+                byte[] cartasJson = conexionHTTP.obtenerRespuesta(this.url);
                 String s = new String(cartasJson);
                 Message msg = new Message();
                 msg.arg1 = CARTAS;
@@ -43,7 +38,7 @@ public class HiloConexion extends Thread {
                 this.handler.sendMessage(msg);
             }
             else{
-                byte[] img = conexionHTTP.obtenerRespuesta(this.urlImg);
+                byte[] img = conexionHTTP.obtenerRespuesta(this.url);
                 Message msg = new Message();
                 msg.arg1 = IMAGEN;
                 msg.obj = img;
@@ -60,9 +55,9 @@ public class HiloConexion extends Thread {
         try {
             JSONObject jsonRespuesta = new JSONObject(s);
             JSONArray jsonArray = jsonRespuesta.getJSONArray("data");
-            CartaModel carta = new CartaModel();
 
             for(int i=0; i<jsonArray.length(); i++){
+                CartaModel carta = new CartaModel();
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                 carta.setId(jsonObject.getInt("id"));
@@ -81,15 +76,7 @@ public class HiloConexion extends Thread {
                         carta.setDef(String.valueOf(jsonObject.getInt("def")));
                         carta.setLevel(String.valueOf(jsonObject.getInt("level")));
                     }
-
                     carta.setAttribute(jsonObject.getString("attribute"));
-
-                    if(jsonObject.has("archetype")){
-                        carta.setArchetype(jsonObject.getString("archetype"));
-                    }
-                    else{
-                        carta.setArchetype(null);
-                    }
                 }
                 else{
                     carta.setAtk(null);
@@ -98,10 +85,19 @@ public class HiloConexion extends Thread {
                     carta.setAttribute(null);
                 }
 
+                if(jsonObject.has("archetype")){
+                    carta.setArchetype(jsonObject.getString("archetype"));
+                }
+                else{
+                    carta.setArchetype(null);
+                }
+
                 JSONArray jsonArrayImg = jsonObject.getJSONArray("card_images");
-                JSONObject jsonImgUrl = jsonArrayImg.getJSONObject(i);
-                carta.setImage_url(jsonImgUrl.getString("image_url"));
-                Log.d("Img_url", carta.getImage_url());
+                for(int j=0; j<jsonArrayImg.length(); j++){
+                    JSONObject jsonImgUrl = jsonArrayImg.getJSONObject(j);
+                    carta.setImage_url(jsonImgUrl.getString("image_url"));
+                    Log.d("Img_url", carta.getImage_url());
+                }
 
                 cartas.add(carta);
             }
