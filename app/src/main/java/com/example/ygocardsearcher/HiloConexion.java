@@ -93,11 +93,10 @@ public class HiloConexion extends Thread {
                 }
 
                 JSONArray jsonArrayImg = jsonObject.getJSONArray("card_images");
-                for(int j=0; j<jsonArrayImg.length(); j++){
-                    JSONObject jsonImgUrl = jsonArrayImg.getJSONObject(j);
+                //for(int j=0; j<jsonArrayImg.length(); j++){
+                    JSONObject jsonImgUrl = jsonArrayImg.getJSONObject(0);
                     carta.setImage_url(jsonImgUrl.getString("image_url"));
-                    Log.d("Img_url", carta.getImage_url());
-                }
+                //}
 
                 cartas.add(carta);
             }

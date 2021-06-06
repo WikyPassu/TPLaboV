@@ -2,6 +2,7 @@ package com.example.ygocardsearcher;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,20 +12,19 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements IOnItemClick, Handler.Callback, View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements IOnItemClick, Handler.Callback, SearchView.OnQueryTextListener{
 
     List<CartaModel> cartas = new ArrayList<CartaModel>();
     CartaAdapter adapter;
     RecyclerView rv;
     Handler handler;
-    EditText etBuscar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +33,24 @@ public class MainActivity extends AppCompatActivity implements IOnItemClick, Han
 
         this.rv = super.findViewById(R.id.rvCartas);
         this.rv.setVisibility(View.GONE);
-
-        Button btnBuscar = super.findViewById(R.id.btnBuscar);
-        btnBuscar.setOnClickListener(this);
-
-        this.etBuscar = super.findViewById(R.id.etBuscar);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_principal, menu);
+        MenuItem menuItem = menu.findItem(R.id.buscar);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setOnQueryTextListener(this);
+        return true;
+    }
+
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        if(item.getItemId() == R.id.filtrar){
+//            //lo que pasaria al tocar el boton
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
     @Override
     public void onItemClick(int index) {
@@ -74,13 +86,19 @@ public class MainActivity extends AppCompatActivity implements IOnItemClick, Han
     }
 
     @Override
-    public void onClick(View view) {
-        String busqueda = String.valueOf(this.etBuscar.getText());
-        if(!"".equals(busqueda)){
-            String s = busqueda.replace(" ", "%20");
+    public boolean onQueryTextSubmit(String query) {
+        Log.d("Submit", query);
+        if(!"".equals(query)){
+            String s = query.replace(" ", "%20");
             this.handler = new Handler(Looper.myLooper(), this);
             HiloConexion hiloApi = new HiloConexion(this.handler, false, "https://db.ygoprodeck.com/api/v7/cardinfo.php?fname=" + s + "&desc=" + s);
             hiloApi.start();
         }
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        return false;
     }
 }
