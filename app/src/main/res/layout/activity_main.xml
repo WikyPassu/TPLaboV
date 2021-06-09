@@ -6,36 +6,14 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <!--<LinearLayout
+    <TextView
+        android:id="@+id/tvResultados"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/tvBuscar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Busqueda por nombre o descripción"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/etBuscar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/btnBuscar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="BUSCAR" />
-
-    </LinearLayout>-->
+        android:text="Resultados: 0"
+        android:textColor="#000000"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCartas"

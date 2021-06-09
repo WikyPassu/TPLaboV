@@ -60,6 +60,10 @@ public class HiloConexion extends Thread {
                 CartaModel carta = new CartaModel();
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
+                if("Skill Card".equals(jsonObject.getString("type"))){
+                    continue;
+                }
+
                 carta.setId(jsonObject.getInt("id"));
                 carta.setName(jsonObject.getString("name"));
                 carta.setType(jsonObject.getString("type"));
@@ -93,15 +97,14 @@ public class HiloConexion extends Thread {
                 }
 
                 JSONArray jsonArrayImg = jsonObject.getJSONArray("card_images");
-                //for(int j=0; j<jsonArrayImg.length(); j++){
-                    JSONObject jsonImgUrl = jsonArrayImg.getJSONObject(0);
-                    carta.setImage_url(jsonImgUrl.getString("image_url"));
-                //}
+                JSONObject jsonImgUrl = jsonArrayImg.getJSONObject(0);
+                carta.setImage_url(jsonImgUrl.getString("image_url"));
 
                 cartas.add(carta);
             }
         } catch (JSONException e) {
             e.printStackTrace();
+            Log.d("Error", "Probablemente query mal formada o query sin resultados.");
         }
 
         return cartas;

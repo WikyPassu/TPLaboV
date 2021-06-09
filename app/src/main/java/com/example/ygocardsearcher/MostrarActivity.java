@@ -105,7 +105,7 @@ public class MostrarActivity extends AppCompatActivity implements Handler.Callba
                 break;
             case "XYZ Monster":
                 this.ivTypeId.setImageResource(R.drawable.xyz);
-                this.ivLevel.setImageResource(R.drawable.rank);
+                this.ivLevel.setImageResource(R.drawable.rango);
                 break;
             case "Pendulum Effect Monster":
             case "Pendulum Flip Effect Monster":
@@ -123,7 +123,7 @@ public class MostrarActivity extends AppCompatActivity implements Handler.Callba
                 break;
             case "XYZ Pendulum Effect Monster":
                 this.ivTypeId.setImageResource(R.drawable.pendulum_xyz);
-                this.ivLevel.setImageResource(R.drawable.rank);
+                this.ivLevel.setImageResource(R.drawable.rango);
                 break;
             case "Link Monster":
                 this.ivTypeId.setImageResource(R.drawable.link);
@@ -143,6 +143,9 @@ public class MostrarActivity extends AppCompatActivity implements Handler.Callba
                 this.cvAtkDef.setVisibility(View.GONE);
                 this.ivLevel.setVisibility(View.GONE);
                 this.tvLevel.setVisibility(View.GONE);
+                break;
+            case "Token":
+                this.ivTypeId.setImageResource(R.drawable.token);
                 break;
             default:
                 this.ivTypeId.setImageResource(R.drawable.effect);

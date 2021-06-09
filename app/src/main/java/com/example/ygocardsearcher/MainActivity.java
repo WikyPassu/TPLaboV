@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,14 +26,31 @@ public class MainActivity extends AppCompatActivity implements IOnItemClick, Han
     CartaAdapter adapter;
     RecyclerView rv;
     Handler handler;
+    TextView tvResultados;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        this.tvResultados = super.findViewById(R.id.tvResultados);
         this.rv = super.findViewById(R.id.rvCartas);
         this.rv.setVisibility(View.GONE);
+        this.handler = new Handler(Looper.myLooper(), this);
+        HiloConexion hiloApi = new HiloConexion(this.handler, false, "https://db.ygoprodeck.com/api/v7/cardinfo.php");
+        hiloApi.start();
+    }
+
+    @Override
+    protected void onRestart() {
+        String query = FiltrarActivity.query;
+        FiltrarActivity.query = null;
+        if(query != null){
+            this.handler = new Handler(Looper.myLooper(), this);
+            HiloConexion hiloApi = new HiloConexion(this.handler, false, query);
+            hiloApi.start();
+        }
+        super.onRestart();
     }
 
     @Override
@@ -44,13 +62,14 @@ public class MainActivity extends AppCompatActivity implements IOnItemClick, Han
         return true;
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        if(item.getItemId() == R.id.filtrar){
-//            //lo que pasaria al tocar el boton
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.filtrar){
+            Intent intent = new Intent(this, FiltrarActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public void onItemClick(int index) {
@@ -79,7 +98,9 @@ public class MainActivity extends AppCompatActivity implements IOnItemClick, Han
             this.rv.setAdapter(this.adapter);
             this.rv.setLayoutManager(new LinearLayoutManager(this));
             this.rv.setVisibility(View.VISIBLE);
-            Log.d("Callback", "Llego cartas");
+            String resultados = "Resultados: " + this.cartas.size();
+            this.tvResultados.setText(resultados);
+            Log.d("Callback", "Llegaron cartas!!!");
         }
 
         return false;

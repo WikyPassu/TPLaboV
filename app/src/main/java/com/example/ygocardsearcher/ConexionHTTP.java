@@ -1,6 +1,7 @@
 package com.example.ygocardsearcher;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class ConexionHTTP {
 
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
-
+            Log.d("Conexion", "Estableciendo conexion...");
             urlConnection.connect();
             int respuesta = urlConnection.getResponseCode();
             Log.d("Conexion", "Respuesta del servidor: " + respuesta);
@@ -32,6 +33,9 @@ public class ConexionHTTP {
                 }
                 is.close();
                 return baos.toByteArray();
+            }
+            else if(respuesta == 400){
+                throw new RuntimeException("No se encontraron cartas con ese filtro.");
             }
             else{
                 throw new RuntimeException("Error en la conexion con el servidor: " + respuesta);

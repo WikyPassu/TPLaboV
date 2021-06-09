@@ -81,6 +81,9 @@ public class CartaAdapter extends RecyclerView.Adapter<CartaViewHolder> {
             case "Trap Card":
                 holder.ivCartita.setImageResource(R.drawable.trap_card);
                 break;
+            case "Token":
+                holder.ivCartita.setImageResource(R.drawable.token);
+                break;
             default:
                 holder.ivCartita.setImageResource(R.drawable.effect);
                 break;

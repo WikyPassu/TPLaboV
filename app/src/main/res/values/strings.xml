@@ -1,3 +1,75 @@
 <resources>
     <string name="app_name">YGOCardSearcher</string>
+    <string-array name="type">
+        <item>Seleccionar tipo</item>
+        <item>Effect Monster</item>
+        <item>Flip Effect Monster</item>
+        <item>Fusion Monster</item>
+        <item>Gemini Monster</item>
+        <item>Link Monster</item>
+        <item>Normal Monster</item>
+        <item>Normal Tuner Monster</item>
+        <item>Pendulum Effect Fusion Monster</item>
+        <item>Pendulum Flip Effect Monster</item>
+        <item>Pendulum Normal Monster</item>
+        <item>Pendulum Tuner Effect Monster</item>
+        <item>Ritual Effect Monster</item>
+        <item>Spell Card</item>
+        <item>Spirit Monster</item>
+        <item>Synchro Monster</item>
+        <item>Synchro Pendulum Effect Monster</item>
+        <item>Synchro Tuner Monster</item>
+        <item>Token</item>
+        <item>Toon Monster</item>
+        <item>Trap Card</item>
+        <item>Tuner Monster</item>
+        <item>Union Effect Monster</item>
+        <item>XYZ Monster</item>
+        <item>XYZ Pendulum Effect Monster</item>
+    </string-array>
+    <string-array name="race">
+        <item>Seleccionar raza</item>
+        <item>Aqua</item>
+        <item>Beast</item>
+        <item>Beast-Warrior</item>
+        <item>Counter</item>
+        <item>Continuous</item>
+        <item>Creator-God</item>
+        <item>Cyberse</item>
+        <item>Dinosaur</item>
+        <item>Divine-Beast</item>
+        <item>Dragon</item>
+        <item>Equip</item>
+        <item>Fairy</item>
+        <item>Fiend</item>
+        <item>Field</item>
+        <item>Fish</item>
+        <item>Insect</item>
+        <item>Machine</item>
+        <item>Normal</item>
+        <item>Plant</item>
+        <item>Psychic</item>
+        <item>Pyro</item>
+        <item>Quick-Play</item>
+        <item>Reptile</item>
+        <item>Rock</item>
+        <item>Ritual</item>
+        <item>Sea Serpent</item>
+        <item>Spellcaster</item>
+        <item>Thunder</item>
+        <item>Warrior</item>
+        <item>Winged Beast</item>
+        <item>Wyrm</item>
+        <item>Zombie</item>
+    </string-array>
+    <string-array name="attribute">
+        <item>Seleccionar atributo</item>
+        <item>DARK</item>
+        <item>EARTH</item>
+        <item>FIRE</item>
+        <item>LIGHT</item>
+        <item>WATER</item>
+        <item>WIND</item>
+        <item>DIVINE</item>
+    </string-array>
 </resources>
