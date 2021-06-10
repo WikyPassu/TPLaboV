@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MostrarActivity extends AppCompatActivity implements Handler.Callback {
 
@@ -269,10 +270,16 @@ public class MostrarActivity extends AppCompatActivity implements Handler.Callba
             case "Counter":
                 this.ivRace.setImageResource(R.drawable.counter);
                 break;
+            case "Wyrm":
+                this.ivRace.setImageResource(R.drawable.wyrm);
+                break;
+            case "Zombie":
+                this.ivRace.setImageResource(R.drawable.zombie);
+                break;
         }
 
         this.handler = new Handler(Looper.myLooper(), this);
-        HiloConexion hiloImg = new HiloConexion(this.handler, true, img_url);
+        HiloConexion hiloImg = new HiloConexion(/*this,*/ this.handler, true, img_url);
         hiloImg.start();
     }
 

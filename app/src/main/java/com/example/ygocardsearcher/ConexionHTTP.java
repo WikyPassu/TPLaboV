@@ -1,7 +1,6 @@
 package com.example.ygocardsearcher;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -11,6 +10,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class ConexionHTTP {
+
+    static String error;
 
     public byte[] obtenerRespuesta(String urlString){
         try {
@@ -35,9 +36,11 @@ public class ConexionHTTP {
                 return baos.toByteArray();
             }
             else if(respuesta == 400){
+                error = "No se encontraron cartas con ese filtro.";
                 throw new RuntimeException("No se encontraron cartas con ese filtro.");
             }
             else{
+                error = "Error en la conexion con el servidor.";
                 throw new RuntimeException("Error en la conexion con el servidor: " + respuesta);
             }
 

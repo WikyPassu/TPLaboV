@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -15,10 +18,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity implements IOnItemClick, Handler.Callback, SearchView.OnQueryTextListener{
 
@@ -27,12 +33,17 @@ public class MainActivity extends AppCompatActivity implements IOnItemClick, Han
     RecyclerView rv;
     Handler handler;
     TextView tvResultados;
+    ProgressBar pbCargando;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        this.pbCargando = super.findViewById(R.id.pbCargando);
+        //pbCargando.getIndeterminateDrawable().setColorFilter(Color.rgb(98, 0 ,238), PorterDuff.Mode.SRC_IN);
+        pbCargando.getIndeterminateDrawable().setColorFilter(new PorterDuffColorFilter(Color.rgb(98, 0 ,238), PorterDuff.Mode.SRC_IN));
+        pbCargando.setVisibility(View.VISIBLE);
         this.tvResultados = super.findViewById(R.id.tvResultados);
         this.rv = super.findViewById(R.id.rvCartas);
         this.rv.setVisibility(View.GONE);
@@ -46,6 +57,8 @@ public class MainActivity extends AppCompatActivity implements IOnItemClick, Han
         String query = FiltrarActivity.query;
         FiltrarActivity.query = null;
         if(query != null){
+            this.rv.setVisibility(View.GONE);
+            this.pbCargando.setVisibility(View.VISIBLE);
             this.handler = new Handler(Looper.myLooper(), this);
             HiloConexion hiloApi = new HiloConexion(this.handler, false, query);
             hiloApi.start();
@@ -97,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements IOnItemClick, Han
             this.adapter = new CartaAdapter(this.cartas, this, this);
             this.rv.setAdapter(this.adapter);
             this.rv.setLayoutManager(new LinearLayoutManager(this));
+            this.pbCargando.setVisibility(View.GONE);
             this.rv.setVisibility(View.VISIBLE);
             String resultados = "Resultados: " + this.cartas.size();
             this.tvResultados.setText(resultados);
@@ -110,10 +124,17 @@ public class MainActivity extends AppCompatActivity implements IOnItemClick, Han
     public boolean onQueryTextSubmit(String query) {
         Log.d("Submit", query);
         if(!"".equals(query)){
-            String s = query.replace(" ", "%20");
+            this.rv.setVisibility(View.GONE);
+            pbCargando.setVisibility(View.VISIBLE);
             this.handler = new Handler(Looper.myLooper(), this);
-            HiloConexion hiloApi = new HiloConexion(this.handler, false, "https://db.ygoprodeck.com/api/v7/cardinfo.php?fname=" + s + "&desc=" + s);
-            hiloApi.start();
+            try {
+                HiloConexion hiloApi = new HiloConexion(this.handler, false, "https://db.ygoprodeck.com/api/v7/cardinfo.php?&fname="+query+"&desc="+query);
+                hiloApi.start();
+            } catch(Exception e){
+                this.mostrarMensaje(ConexionHTTP.error);
+                ConexionHTTP.error = null;
+            }
+
         }
         return false;
     }
@@ -121,5 +142,9 @@ public class MainActivity extends AppCompatActivity implements IOnItemClick, Han
     @Override
     public boolean onQueryTextChange(String newText) {
         return false;
+    }
+
+    public void mostrarMensaje(String mensaje){
+        Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
     }
 }

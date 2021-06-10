@@ -12,8 +12,17 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="Resultados: 0"
+        android:textSize="18dp"
         android:textColor="#000000"
         android:textStyle="bold" />
+
+    <ProgressBar
+        android:id="@+id/pbCargando"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_gravity="center"
+        android:layout_marginTop="250dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCartas"
