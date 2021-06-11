@@ -1,6 +1,14 @@
 package com.example.ygocardsearcher;
 
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -11,7 +19,21 @@ import java.net.URL;
 
 public class ConexionHTTP {
 
-    static String error;
+    Activity a;
+    static RecyclerView rv;
+    static ProgressBar pb;
+
+    public ConexionHTTP(Activity a){
+        this.a = a;
+    }
+
+    public static void setRecyclerView(RecyclerView recyclerView){
+        rv = recyclerView;
+    }
+
+    public static void setProgressBar(ProgressBar progressBar){
+        pb = progressBar;
+    }
 
     public byte[] obtenerRespuesta(String urlString){
         try {
@@ -36,11 +58,13 @@ public class ConexionHTTP {
                 return baos.toByteArray();
             }
             else if(respuesta == 400){
-                error = "No se encontraron cartas con ese filtro.";
+                this.cambiarVisibilidad(this.a);
+                this.mostrarMensaje(this.a, "No se encontraron cartas con ese filtro.");
                 throw new RuntimeException("No se encontraron cartas con ese filtro.");
             }
             else{
-                error = "Error en la conexion con el servidor.";
+                this.cambiarVisibilidad(this.a);
+                this.mostrarMensaje(this.a, "Error en la conexion con el servidor.");
                 throw new RuntimeException("Error en la conexion con el servidor: " + respuesta);
             }
 
@@ -51,5 +75,25 @@ public class ConexionHTTP {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+    }
+
+    public void mostrarMensaje(final Activity a, final String mensaje){
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(a, mensaje, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void cambiarVisibilidad(final Activity a){
+        a.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                pb.setVisibility(View.GONE);
+                rv.setVisibility(View.VISIBLE);
+            }
+        });
     }
 }

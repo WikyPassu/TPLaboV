@@ -279,7 +279,7 @@ public class MostrarActivity extends AppCompatActivity implements Handler.Callba
         }
 
         this.handler = new Handler(Looper.myLooper(), this);
-        HiloConexion hiloImg = new HiloConexion(/*this,*/ this.handler, true, img_url);
+        HiloConexion hiloImg = new HiloConexion(this, this.handler, true, img_url);
         hiloImg.start();
     }
 

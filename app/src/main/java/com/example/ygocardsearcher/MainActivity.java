@@ -6,6 +6,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -24,7 +25,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity implements IOnItemClick, Handler.Callback, SearchView.OnQueryTextListener{
 
@@ -47,8 +47,12 @@ public class MainActivity extends AppCompatActivity implements IOnItemClick, Han
         this.tvResultados = super.findViewById(R.id.tvResultados);
         this.rv = super.findViewById(R.id.rvCartas);
         this.rv.setVisibility(View.GONE);
+
+        ConexionHTTP.setRecyclerView(this.rv);
+        ConexionHTTP.setProgressBar(this.pbCargando);
+
         this.handler = new Handler(Looper.myLooper(), this);
-        HiloConexion hiloApi = new HiloConexion(this.handler, false, "https://db.ygoprodeck.com/api/v7/cardinfo.php");
+        HiloConexion hiloApi = new HiloConexion(this, this.handler, false, "https://db.ygoprodeck.com/api/v7/cardinfo.php");
         hiloApi.start();
     }
 
@@ -60,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements IOnItemClick, Han
             this.rv.setVisibility(View.GONE);
             this.pbCargando.setVisibility(View.VISIBLE);
             this.handler = new Handler(Looper.myLooper(), this);
-            HiloConexion hiloApi = new HiloConexion(this.handler, false, query);
+            HiloConexion hiloApi = new HiloConexion(this, this.handler, false, query);
             hiloApi.start();
         }
         super.onRestart();
@@ -127,14 +131,8 @@ public class MainActivity extends AppCompatActivity implements IOnItemClick, Han
             this.rv.setVisibility(View.GONE);
             pbCargando.setVisibility(View.VISIBLE);
             this.handler = new Handler(Looper.myLooper(), this);
-            try {
-                HiloConexion hiloApi = new HiloConexion(this.handler, false, "https://db.ygoprodeck.com/api/v7/cardinfo.php?&fname="+query+"&desc="+query);
-                hiloApi.start();
-            } catch(Exception e){
-                this.mostrarMensaje(ConexionHTTP.error);
-                ConexionHTTP.error = null;
-            }
-
+            HiloConexion hiloApi = new HiloConexion(this, this.handler, false, "https://db.ygoprodeck.com/api/v7/cardinfo.php?&fname="+query+"&desc="+query);
+            hiloApi.start();
         }
         return false;
     }
@@ -142,9 +140,5 @@ public class MainActivity extends AppCompatActivity implements IOnItemClick, Han
     @Override
     public boolean onQueryTextChange(String newText) {
         return false;
-    }
-
-    public void mostrarMensaje(String mensaje){
-        Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
     }
 }

@@ -1,5 +1,6 @@
 package com.example.ygocardsearcher;
 
+import android.app.Activity;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -18,17 +19,19 @@ public class HiloConexion extends Thread {
     Handler handler;
     Boolean img;
     String url;
+    Activity a;
 
-    public HiloConexion(Handler handler, boolean img, String url){
+    public HiloConexion(Activity a, Handler handler, boolean img, String url){
         this.handler = handler;
         this.img = img;
         this.url = url;
+        this.a = a;
     }
 
     @Override
     public void run(){
         try{
-            ConexionHTTP conexionHTTP = new ConexionHTTP();
+            ConexionHTTP conexionHTTP = new ConexionHTTP(this.a);
             if(!img){
                 byte[] cartasJson = conexionHTTP.obtenerRespuesta(this.url);
                 String s = new String(cartasJson);
@@ -46,7 +49,6 @@ public class HiloConexion extends Thread {
             }
         } catch(Exception e){
             e.printStackTrace();
-            //throw new RuntimeException(e);
         }
     }
 
