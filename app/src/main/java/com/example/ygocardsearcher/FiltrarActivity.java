@@ -21,14 +21,17 @@ public class FiltrarActivity extends AppCompatActivity implements AdapterView.On
     Spinner spType;
     Spinner spRace;
     Spinner spAttribute;
+    Spinner spArchetype;
     ArrayAdapter<CharSequence> adapterType;
     ArrayAdapter<CharSequence> adapterRace;
     ArrayAdapter<CharSequence> adapterAttribute;
+    ArrayAdapter<CharSequence> adapterArchetype;
     SeekBar sbLevelRank;
     TextView tvLevelRank;
     String type;
     String race;
     String attribute;
+    String archetype;
     String levelRank;
     String buscar;
     String atk;
@@ -86,6 +89,14 @@ public class FiltrarActivity extends AppCompatActivity implements AdapterView.On
         this.spAttribute.setOnItemSelectedListener(this);
         this.attribute = "";
 
+        this.spArchetype = super.findViewById(R.id.spArchetype);
+        this.adapterArchetype = ArrayAdapter.createFromResource(this,
+                R.array.archetype, android.R.layout.simple_spinner_item);
+        this.adapterArchetype.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        this.spArchetype.setAdapter(this.adapterArchetype);
+        this.spArchetype.setOnItemSelectedListener(this);
+        this.archetype = "";
+
         this.tvLevelRank = super.findViewById(R.id.tvLevelRank);
         this.sbLevelRank = super.findViewById(R.id.sbLevelRank);
         this.levelRank = "0";
@@ -124,6 +135,9 @@ public class FiltrarActivity extends AppCompatActivity implements AdapterView.On
             case R.id.spAttribute:
                 this.attribute = adapterView.getItemAtPosition(i).toString();
                 break;
+            case R.id.spArchetype:
+                this.archetype = adapterView.getItemAtPosition(i).toString();
+                break;
         }
     }
 
@@ -154,6 +168,9 @@ public class FiltrarActivity extends AppCompatActivity implements AdapterView.On
                 if("Seleccionar atributo".equals(this.attribute)){
                     this.attribute = "";
                 }
+                if("Seleccionar arquetipo".equals(this.archetype)){
+                    this.archetype = "";
+                }
                 if(!"".equals(this.buscar)){
                     query = query.concat("&fname="+this.buscar)
                             .concat("&desc="+this.buscar);
@@ -166,6 +183,9 @@ public class FiltrarActivity extends AppCompatActivity implements AdapterView.On
                 }
                 if(!"".equals(this.attribute)){
                     query = query.concat("&attribute="+this.attribute);
+                }
+                if(!"".equals(this.archetype)){
+                    query = query.concat("&archetype="+this.archetype);
                 }
                 if(!"0".equals(this.levelRank)){
                     query = query.concat("&level="+this.levelRank);
@@ -182,9 +202,11 @@ public class FiltrarActivity extends AppCompatActivity implements AdapterView.On
                 if(!"".equals(this.scale)){
                     query = query.concat("&scale="+this.scale);
                 }
+                if(!"https://db.ygoprodeck.com/api/v7/cardinfo.php?".equals(query)){
+                    super.finish();
+                }
                 break;
         }
         Log.d("Query", query);
-        super.finish();
     }
 }

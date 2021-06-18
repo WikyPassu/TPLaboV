@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">YGOCardSearcher</string>
     <string-array name="type">
@@ -73,5 +74,398 @@
         <item>WATER</item>
         <item>WIND</item>
         <item>DIVINE</item>
+    </string-array>
+    <string-array name="archetype">
+        <item>Seleccionar arquetipo</item>
+        <item>@Ignister</item>
+        <item>A.I.</item>
+        <item>ABC</item>
+        <item>Abhyss</item>
+        <item>Abyss Actor</item>
+        <item>Adamancipator</item>
+        <item>Aesir</item>
+        <item>Aether</item>
+        <item>Alien</item>
+        <item>Alligator</item>
+        <item>Allure Queen</item>
+        <item>Ally of Justice</item>
+        <item>Altergeist</item>
+        <item>Amazement</item>
+        <item>Amazoness</item>
+        <item>Amorphage</item>
+        <item>Ancient Gear</item>
+        <item>Ancient Warriors</item>
+        <item>Angel</item>
+        <item>Anti</item>
+        <item>Apoqliphort</item>
+        <item>Appliancer</item>
+        <item>Aquaactress</item>
+        <item>Arcana Force</item>
+        <item>Archfiend</item>
+        <item>Armed Dragon</item>
+        <item>Aroma</item>
+        <item>Artifact</item>
+        <item>Assault Mode</item>
+        <item>Atlantean</item>
+        <item>B.E.S.</item>
+        <item>Bamboo Sword</item>
+        <item>Barbaros</item>
+        <item>Batteryman</item>
+        <item>Battleguard</item>
+        <item>Battlewasp</item>
+        <item>Battlin\' Boxer</item>
+        <item>Black Luster Soldier</item>
+        <item>Blackwing</item>
+        <item>Blaze Accelerator</item>
+        <item>Blue-Eyes</item>
+        <item>Bonding</item>
+        <item>Book of</item>
+        <item>Boot-Up</item>
+        <item>Borrel</item>
+        <item>Bounzer</item>
+        <item>Bujin</item>
+        <item>Burning Abyss</item>
+        <item>Butterfly</item>
+        <item>Butterspy</item>
+        <item>Cataclysmic</item>
+        <item>Celtic Guard</item>
+        <item>Chaos</item>
+        <item>Chaos Phantom</item>
+        <item>Charmer</item>
+        <item>Chemicritter</item>
+        <item>Chronomaly</item>
+        <item>Chrysalis</item>
+        <item>Cipher</item>
+        <item>Clear Wing</item>
+        <item>Cloudian</item>
+        <item>Code Talker</item>
+        <item>Codebreaker</item>
+        <item>Constellar</item>
+        <item>Crusadia</item>
+        <item>Crystal Beast</item>
+        <item>Crystron</item>
+        <item>Cubic</item>
+        <item>Cupid</item>
+        <item>CXyz</item>
+        <item>Cyber</item>
+        <item>Cyber Angel</item>
+        <item>Cyber Dragon</item>
+        <item>Cyberdark</item>
+        <item>D.D.</item>
+        <item>D/D</item>
+        <item>Danger!</item>
+        <item>Dark Contract</item>
+        <item>Dark Magician</item>
+        <item>Dark Scorpion</item>
+        <item>Dark World</item>
+        <item>Darklord</item>
+        <item>Deep Sea</item>
+        <item>Demise</item>
+        <item>Deskbot</item>
+        <item>Despia</item>
+        <item>Destiny HERO</item>
+        <item>Destruction Sword</item>
+        <item>Dice</item>
+        <item>Digital Bug</item>
+        <item>Dinomist</item>
+        <item>Dinowrestler</item>
+        <item>Djinn</item>
+        <item>Dododo</item>
+        <item>Dogmatika</item>
+        <item>Doll</item>
+        <item>Doriado</item>
+        <item>Dracoslayer</item>
+        <item>Dracoverlord</item>
+        <item>Dragonmaid</item>
+        <item>Dragunity</item>
+        <item>Dream Mirror</item>
+        <item>Drytron</item>
+        <item>Dual Avatar</item>
+        <item>Duston</item>
+        <item>Earthbound</item>
+        <item>Edge Imp</item>
+        <item>Egyptian God</item>
+        <item>Eldlich</item>
+        <item>Elemental HERO</item>
+        <item>Elemental Lord</item>
+        <item>Elementsaber</item>
+        <item>Empowered Warrior</item>
+        <item>Endymion</item>
+        <item>Evil Eye</item>
+        <item>Evil HERO</item>
+        <item>Evil Twin</item>
+        <item>Evilswarm</item>
+        <item>Evolsaur</item>
+        <item>Evoltile</item>
+        <item>Evolzar</item>
+        <item>Exodia</item>
+        <item>Eyes Restrict</item>
+        <item>F.A.</item>
+        <item>Fabled</item>
+        <item>Fairy Tail</item>
+        <item>Fire Fist</item>
+        <item>Fire Formation</item>
+        <item>Fire King</item>
+        <item>Fishborg</item>
+        <item>Flamvell</item>
+        <item>Fleur</item>
+        <item>Flower Cardian</item>
+        <item>Fluffal</item>
+        <item>Flundereeze</item>
+        <item>Forbidden</item>
+        <item>Fortune Fairy</item>
+        <item>Fortune Lady</item>
+        <item>Fossil</item>
+        <item>Frightfur</item>
+        <item>Frog</item>
+        <item>Fur Hire</item>
+        <item>Gadget</item>
+        <item>Gagaga</item>
+        <item>Gaia The Fierce Knight</item>
+        <item>Galaxy-Eyes</item>
+        <item>Gandora</item>
+        <item>Geargia</item>
+        <item>Gem-</item>
+        <item>Generaider</item>
+        <item>Genex</item>
+        <item>Ghostrick</item>
+        <item>Gimmick Puppet</item>
+        <item>Gishki</item>
+        <item>Gizmek</item>
+        <item>Glacial Beast</item>
+        <item>Gladiator Beast</item>
+        <item>Gogogo</item>
+        <item>Golden Castle of Stromberg</item>
+        <item>Golden Land</item>
+        <item>Gorgonic</item>
+        <item>Gouki</item>
+        <item>Gravekeeper\'s</item>
+        <item>Graydle</item>
+        <item>Greed</item>
+        <item>Grepher</item>
+        <item>Guardian</item>
+        <item>Guardragon</item>
+        <item>Gusto</item>
+        <item>Harpie</item>
+        <item>Hazy</item>
+        <item>Herald</item>
+        <item>Heraldic</item>
+        <item>Heraldry</item>
+        <item>HERO</item>
+        <item>Heroic</item>
+        <item>Hi-Speedroid</item>
+        <item>Hieratic</item>
+        <item>Hole</item>
+        <item>Holy Knight</item>
+        <item>Holy Night</item>
+        <item>Horus the Black Flame Dragon</item>
+        <item>Ice Barrier</item>
+        <item>Igknight</item>
+        <item>Impcantation</item>
+        <item>Infernity</item>
+        <item>Infernoble Knight</item>
+        <item>Infernoid</item>
+        <item>Infestation</item>
+        <item>Infinitrack</item>
+        <item>Invoked</item>
+        <item>Inzektor</item>
+        <item>Iron Chain</item>
+        <item>Jester</item>
+        <item>Jinzo</item>
+        <item>Junk</item>
+        <item>Jurrac</item>
+        <item>Kaiju</item>
+        <item>Karakuri</item>
+        <item>Knightmare</item>
+        <item>Koa\'ki Meiru</item>
+        <item>Koala</item>
+        <item>Kozmo</item>
+        <item>Kragen</item>
+        <item>Krawler</item>
+        <item>Kuriboh</item>
+        <item>Laval</item>
+        <item>Legendary Knight</item>
+        <item>Lightsworn</item>
+        <item>Live Twin</item>
+        <item>Live?Twin</item>
+        <item>Lunalight</item>
+        <item>Lyrilusc</item>
+        <item>Machina</item>
+        <item>Madolche</item>
+        <item>Madoor</item>
+        <item>Magical Musket</item>
+        <item>Magician</item>
+        <item>Magician Girl</item>
+        <item>Magikey</item>
+        <item>Magistus</item>
+        <item>Magnet Warrior</item>
+        <item>Majespecter</item>
+        <item>Majestic</item>
+        <item>Maju</item>
+        <item>Malefic</item>
+        <item>Malicevorous</item>
+        <item>Marincess</item>
+        <item>Mask</item>
+        <item>Masked HERO</item>
+        <item>Materiactor</item>
+        <item>Mathmech</item>
+        <item>Mayakashi</item>
+        <item>Mecha Phantom Beast</item>
+        <item>Megalith</item>
+        <item>Mekk-Knight</item>
+        <item>Meklord</item>
+        <item>Melffy</item>
+        <item>Melodious</item>
+        <item>Mermail</item>
+        <item>Metalfoes</item>
+        <item>Metaphys</item>
+        <item>Mist Valley</item>
+        <item>Monarch</item>
+        <item>Morphtronic</item>
+        <item>Mystical Beast of the Forest</item>
+        <item>Myutant</item>
+        <item>Naturia</item>
+        <item>Nekroz</item>
+        <item>Nemesys</item>
+        <item>Neo-Spacian</item>
+        <item>Nephthys</item>
+        <item>Nimble</item>
+        <item>Ninja</item>
+        <item>Ninjitsu Art</item>
+        <item>Noble Knight</item>
+        <item>Nordic</item>
+        <item>Numeron</item>
+        <item>Odd-Eyes</item>
+        <item>Ojama</item>
+        <item>Onomato</item>
+        <item>Orcust</item>
+        <item>Paladins of Dragons</item>
+        <item>Paleozoic</item>
+        <item>Parasite</item>
+        <item>Parshath</item>
+        <item>Pendulum</item>
+        <item>Pendulum Dragon</item>
+        <item>Penguin</item>
+        <item>Performage</item>
+        <item>Performapal</item>
+        <item>Phantasm Spiral</item>
+        <item>Phantom Knights</item>
+        <item>Photon</item>
+        <item>Plunder Patroll</item>
+        <item>Possessed</item>
+        <item>Potan</item>
+        <item>Power Tool</item>
+        <item>Prank-Kids</item>
+        <item>Predaplant</item>
+        <item>Prediction Princess</item>
+        <item>Priestess</item>
+        <item>PSY-Frame</item>
+        <item>Qli</item>
+        <item>Raidraptor</item>
+        <item>Rank-Up-Magic</item>
+        <item>Red-Eyes</item>
+        <item>Reptilianne</item>
+        <item>Resonator</item>
+        <item>Rikka</item>
+        <item>Ritual Beast</item>
+        <item>Roid</item>
+        <item>Rokket</item>
+        <item>Roland</item>
+        <item>Rose</item>
+        <item>Rose Dragon</item>
+        <item>S-Force</item>
+        <item>Sacred Beast</item>
+        <item>Salamangreat</item>
+        <item>Scrap</item>
+        <item>Secret Six Samurai</item>
+        <item>Shaddoll</item>
+        <item>Shark</item>
+        <item>Shinobird</item>
+        <item>Shiranui</item>
+        <item>Silent Magician</item>
+        <item>Silent Swordsman</item>
+        <item>Simorgh</item>
+        <item>Six Samurai</item>
+        <item>Skull Servant</item>
+        <item>Sky Scourge</item>
+        <item>Sky Striker</item>
+        <item>Slime</item>
+        <item>Solemn</item>
+        <item>Solfachord</item>
+        <item>Speedroid</item>
+        <item>Spellbook</item>
+        <item>Sphinx</item>
+        <item>Spirit Message</item>
+        <item>Spiritual Art</item>
+        <item>Springans</item>
+        <item>SPYRAL</item>
+        <item>Star Seraph</item>
+        <item>Stardust</item>
+        <item>Starliege</item>
+        <item>Steelswarm</item>
+        <item>Stellarknight</item>
+        <item>Stigmata</item>
+        <item>Stigmatika</item>
+        <item>Subterror</item>
+        <item>Sunavalon</item>
+        <item>Sunseed</item>
+        <item>Sunvine</item>
+        <item>Super Defense Robot</item>
+        <item>Super Quant</item>
+        <item>Superheavy</item>
+        <item>Supreme King</item>
+        <item>Suship</item>
+        <item>Sylvan</item>
+        <item>Symphonic Warrior</item>
+        <item>Synchro</item>
+        <item>Synchron</item>
+        <item>T.G.</item>
+        <item>Tellarknight</item>
+        <item>Tenyi</item>
+        <item>The Agent</item>
+        <item>The Weather</item>
+        <item>Thunder Dragon</item>
+        <item>Time Thief</item>
+        <item>Timelord</item>
+        <item>Tindangle</item>
+        <item>Toon</item>
+        <item>Trap Monster</item>
+        <item>Traptrix</item>
+        <item>Tri-Brigade</item>
+        <item>Triamid</item>
+        <item>Trickstar</item>
+        <item>True Draco</item>
+        <item>U.A.</item>
+        <item>Umbral Horror</item>
+        <item>Umi</item>
+        <item>Unchained</item>
+        <item>Ursarctic</item>
+        <item>Utopia</item>
+        <item>Valkyrie</item>
+        <item>Vampire</item>
+        <item>Vassal</item>
+        <item>Vendread</item>
+        <item>Venom</item>
+        <item>Virtual World</item>
+        <item>Vision HERO</item>
+        <item>Void</item>
+        <item>Volcanic</item>
+        <item>Vylon</item>
+        <item>War Rock</item>
+        <item>Watt</item>
+        <item>Wicked God</item>
+        <item>Wind-Up</item>
+        <item>Windwitch</item>
+        <item>Witchcrafter</item>
+        <item>World Chalice</item>
+        <item>World Legacy</item>
+        <item>Worm</item>
+        <item>X-Saber</item>
+        <item>Yang Zing</item>
+        <item>Yosenju</item>
+        <item>Yubel</item>
+        <item>Zefra</item>
+        <item>ZEXAL</item>
+        <item>Zoodiac</item>
     </string-array>
 </resources>
